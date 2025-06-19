@@ -27,6 +27,7 @@ const LoginForm = () => {
       router.push("/");
       setErrorMessage("");
     } catch (err) {
+      // @ts-expect-error will fix this later
       if (err.status === 401) {
         setErrorMessage("You have provided bad credentials");
       }
