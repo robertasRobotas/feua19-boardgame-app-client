@@ -5,6 +5,12 @@
   padding: 1rem;
   box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
   gap: 2rem;
+  transition: 0.3s;
+  cursor: pointer;
+}
+
+.container:hover {
+  scale: 1.03;
 }
 
 .photoWrapper {
