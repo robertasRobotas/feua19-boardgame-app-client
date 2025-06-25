@@ -3,9 +3,15 @@ import axios from "axios";
 import React, { useEffect, useState } from "react";
 import Cookie from "js-cookie";
 import { BoardgameType } from "@/types/boardgame";
+import BoardgameView from "@/components/BoardgameView/BoardgameView";
+import { useRouter } from "next/router";
 
 const BoardgamePage = () => {
   const [game, setGame] = useState<BoardgameType | null>(null);
+
+  const router = useRouter();
+
+  const id = router.query.id as string;
 
   const fetchBoardgame = async (id: string) => {
     try {
@@ -22,14 +28,16 @@ const BoardgamePage = () => {
   };
 
   useEffect(() => {
-    fetchBoardgame("226a3ced-a8d0-4fb0-9532-02f52f8c8189");
-  }, []);
+    if (id) {
+      fetchBoardgame(id);
+    }
+  }, [id]);
 
   return (
     <div>
       <Header />
 
-      {game ? <>{game.title}</> : <>Loading</>}
+      {game ? <BoardgameView boardgame={game} /> : <>Loading</>}
     </div>
   );
 };
