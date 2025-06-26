@@ -1,16 +1,38 @@
 import { BoardgameType } from "@/types/boardgame";
-
+import Cookie from "js-cookie";
 import styles from "./styles.module.css";
+import axios from "axios";
+import { useRouter } from "next/router";
+import Button from "../Button/Button";
 
 type BoardgameViewProps = {
   boardgame: BoardgameType;
 };
 
 const BoardgameView = ({ boardgame }: BoardgameViewProps) => {
-  console.log(boardgame);
+  const router = useRouter();
 
-  const onDeleteBoardgame = () => {
-    // delete logic
+  const onDeleteBoardgame = async () => {
+    try {
+      const jwt = Cookie.get("boardgame-app-user-jwt-token");
+
+      const response = await axios.delete(
+        `http://localhost:3005/games/${boardgame.id}`,
+        {
+          headers: {
+            Authorization: jwt,
+          },
+        }
+      );
+
+      if (response.status === 200) {
+        router.push("/");
+      }
+
+      console.log(response);
+    } catch (err) {
+      console.log(err);
+    }
   };
 
   return (
@@ -18,7 +40,11 @@ const BoardgameView = ({ boardgame }: BoardgameViewProps) => {
       <div className={styles.imgWrapper}>
         <img src={boardgame.imgUrl} />
 
-        <button onClick={onDeleteBoardgame}>Delete</button>
+        <Button
+          title="Delete Boardgame"
+          type="DANGER"
+          onClick={onDeleteBoardgame}
+        />
       </div>
       <div className={styles.description}>
         <h1>

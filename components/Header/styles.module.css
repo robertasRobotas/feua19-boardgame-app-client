@@ -1,4 +1,22 @@
 .container {
   height: 90px;
   background-color: tan;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 2rem;
+}
+
+.logo {
+  font-size: 1.6rem;
+}
+
+.container nav ul {
+  list-style: none;
+  display: flex;
+  gap: 2rem;
+}
+
+.container nav ul li a {
+  text-decoration: none;
 }

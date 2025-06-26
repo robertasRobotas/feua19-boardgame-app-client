@@ -1,0 +1,20 @@
+.main {
+  padding: 0.4rem;
+  border-radius: 0.2rem;
+  color: white;
+  font-weight: 500;
+  border: none;
+  cursor: pointer;
+}
+
+.DEFAULT {
+  background-color: rgb(60, 60, 191);
+}
+
+.WARNING {
+  background-color: rgb(191, 171, 60);
+}
+
+.DANGER {
+  background-color: rgb(191, 60, 60);
+}
