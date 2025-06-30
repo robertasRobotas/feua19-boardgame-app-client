@@ -1,7 +1,11 @@
-import React from "react";
+import GameInsertForm from "@/components/GameInsertForm/GameInsertForm";
 
 const InsertPage = () => {
-  return <div>index</div>;
+  return (
+    <div>
+      <GameInsertForm />
+    </div>
+  );
 };
 
 export default InsertPage;

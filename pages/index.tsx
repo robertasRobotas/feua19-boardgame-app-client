@@ -5,6 +5,7 @@ import { useRouter } from "next/router";
 import Cookie from "js-cookie";
 import { BoardgameType } from "@/types/boardgame";
 import CardsWrapper from "@/components/CardsWrapper/CardsWrapper";
+import Footer from "@/components/Footer/Footer";
 
 export default function Home() {
   const router = useRouter();
@@ -39,7 +40,8 @@ export default function Home() {
   return (
     <>
       <Header />
-      <CardsWrapper boardgames={boardgames} />
+      {/* <CardsWrapper boardgames={boardgames} /> */}
+      <Footer />
     </>
   );
 }
