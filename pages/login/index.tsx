@@ -1,13 +1,12 @@
-import Header from "@/components/Header/Header";
 import LoginForm from "@/components/LoginForm/LoginForm";
+import PageTemplate from "@/components/PageTemplate/PageTemplate";
 import React from "react";
 
 const index = () => {
   return (
-    <div>
-      <Header />
+    <PageTemplate>
       <LoginForm />
-    </div>
+    </PageTemplate>
   );
 };
 

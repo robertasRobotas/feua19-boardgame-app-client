@@ -1,11 +1,10 @@
-import axios from "axios";
-import Header from "@/components/Header/Header";
 import { useEffect, useState } from "react";
 import { useRouter } from "next/router";
 import Cookie from "js-cookie";
 import { BoardgameType } from "@/types/boardgame";
 import CardsWrapper from "@/components/CardsWrapper/CardsWrapper";
-import Footer from "@/components/Footer/Footer";
+import PageTemplate from "@/components/PageTemplate/PageTemplate";
+import { fetchAllBoardgames } from "@/api/game";
 
 export default function Home() {
   const router = useRouter();
@@ -16,11 +15,7 @@ export default function Home() {
     try {
       const jwt = Cookie.get("boardgame-app-user-jwt-token");
 
-      const result = await axios.get("http://localhost:3005/games", {
-        headers: {
-          Authorization: jwt,
-        },
-      });
+      const result = await fetchAllBoardgames({ jwt: jwt! });
 
       setBoardgames(result.data.games);
     } catch (err) {
@@ -38,10 +33,8 @@ export default function Home() {
   }, []);
 
   return (
-    <>
-      <Header />
-      {/* <CardsWrapper boardgames={boardgames} /> */}
-      <Footer />
-    </>
+    <PageTemplate>
+      <CardsWrapper boardgames={boardgames} />
+    </PageTemplate>
   );
 }

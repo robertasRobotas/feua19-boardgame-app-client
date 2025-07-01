@@ -1,8 +1,8 @@
 import { useState } from "react";
 import styles from "./styles.module.css";
-import axios from "axios";
 import Cookies from "js-cookie";
 import { useRouter } from "next/router";
+import { loginUser } from "@/api/user";
 
 const LoginForm = () => {
   const [email, setEmail] = useState("");
@@ -13,15 +13,7 @@ const LoginForm = () => {
 
   const onLogin = async () => {
     try {
-      const loginBody = {
-        email: email,
-        password: password,
-      };
-
-      const response = await axios.post(
-        "http://localhost:3005/users/login",
-        loginBody
-      );
+      const response = await loginUser({ email: email, password: password });
 
       Cookies.set("boardgame-app-user-jwt-token", response.data.jwt);
       router.push("/");

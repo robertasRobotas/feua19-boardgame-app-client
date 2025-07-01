@@ -1,10 +1,11 @@
 import GameInsertForm from "@/components/GameInsertForm/GameInsertForm";
+import PageTemplate from "@/components/PageTemplate/PageTemplate";
 
 const InsertPage = () => {
   return (
-    <div>
+    <PageTemplate>
       <GameInsertForm />
-    </div>
+    </PageTemplate>
   );
 };
 

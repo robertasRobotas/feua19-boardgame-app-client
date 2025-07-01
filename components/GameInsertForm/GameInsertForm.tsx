@@ -2,10 +2,10 @@ import React, { useState } from "react";
 import styles from "./styles.module.css";
 import RangeInput from "../Range/Range";
 import { getRangeArray } from "./helper";
-import axios from "axios";
 import { useRouter } from "next/router";
 import Cookies from "js-cookie";
 import { ToastContainer, toast } from "react-toastify";
+import { insertGame } from "@/api/game";
 
 const GameInsertForm = () => {
   const router = useRouter();
@@ -42,11 +42,7 @@ const GameInsertForm = () => {
 
       const jwtToken = Cookies.get("boardgame-app-user-jwt-token");
 
-      const response = await axios.post("http://localhost:3005/games", game, {
-        headers: {
-          Authorization: jwtToken,
-        },
-      });
+      const response = await insertGame({ jwt: jwtToken!, game });
 
       if (response.status === 200 || response.status === 201) {
         console.log("Game created successfully");

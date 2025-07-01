@@ -20,3 +20,38 @@
 .container nav ul li a {
   text-decoration: none;
 }
+
+.container nav {
+  display: flex;
+}
+
+.burgerBtn {
+  width: 2rem;
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  display: none;
+}
+
+.burgerBtn img {
+  width: 100%;
+  height: 100%;
+}
+
+.overlay {
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  background-color: cadetblue;
+  top: 90px;
+}
+
+@media only screen and (max-width: 768px) {
+  .container nav {
+    display: none;
+  }
+
+  .burgerBtn {
+    display: flex;
+  }
+}
