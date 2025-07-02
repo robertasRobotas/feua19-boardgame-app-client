@@ -1,3 +1,3 @@
 export const config = {
-  BASE_URL: "http://localhost:3005",
+  BASE_URL: "https://boardgame-api.onrender.com",
 };
